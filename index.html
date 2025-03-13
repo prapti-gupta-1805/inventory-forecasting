@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Inventory Forecasting</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #2c3e50, #34495e);
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        table, th, td {
+            border: none;
+            padding: 12px;
+            text-align: center;
+            color: #fff;
+        }
+        th {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        button {
+            padding: 12px 20px;
+            background: linear-gradient(45deg, #4a90e2, #357ABD);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #357ABD, #2C5DA2);
+        }
+        input[type="file"] {
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #4a90e2;">AI Inventory Forecasting</h1>
+        
+        <!-- Chart Section -->
+        <div class="card">
+            <h2>Stock Prediction Chart</h2>
+            <canvas id="stockChart"></canvas>
+        </div>
+        
+        <!-- Inventory Table -->
+        <div class="card">
+            <h2>Inventory Data</h2>
+            <table>
+                <tr>
+                    <th>Month</th>
+                    <th>Stock</th>
+                    <th>Predicted Stock</th>
+                </tr>
+                <tr><td>Jan</td><td>500</td><td>550</td></tr>
+                <tr><td>Feb</td><td>450</td><td>500</td></tr>
+                <tr><td>Mar</td><td>600</td><td>620</td></tr>
+            </table>
+        </div>
+        
+        <!-- File Upload Section -->
+        <div class="card">
+            <h2>Upload Inventory Data</h2>
+            <input type="file" id="fileUpload">
+            <button onclick="uploadFile()">Upload</button>
+        </div>
+    </div>
+    
+    <script>
+        // Chart.js for Stock Prediction Chart
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        const stockChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar'],
+                datasets: [
+                    { label: 'Actual Stock', data: [500, 450, 600], borderColor: '#4a90e2', fill: false, tension: 0.4 },
+                    { label: 'Predicted Stock', data: [550, 500, 620], borderColor: '#357ABD', fill: false, tension: 0.4 }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: '#fff' } }
+                },
+                scales: {
+                    x: { ticks: { color: '#fff' } },
+                    y: { ticks: { color: '#fff' } }
+                }
+            }
+        });
+        
+        function uploadFile() {
+            alert('File upload functionality coming soon!');
+        }
+    </script>
+</body>
+</html>
